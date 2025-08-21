@@ -1,0 +1,32 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="miniGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cccccc;stop-opacity:1" />
+    </linearGradient>
+    <!-- Clippath simple pour effet brisé -->
+    <clipPath id="miniClip">
+      <polygon points="0,0 6,0 7,8 5,16 0,16"/>
+      <polygon points="7,0 11,0 12,8 10,16 6,16"/>
+      <polygon points="12,0 16,0 16,16 11,16"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Fond -->
+  <rect width="16" height="16" rx="3" fill="#000"/>
+  
+  <!-- Contenu brisé -->
+  <g clip-path="url(#miniClip)">
+    <!-- Note simple -->
+    <circle cx="5" cy="11" r="2" fill="url(#miniGrad)"/>
+    <rect x="7" y="4" width="1" height="7" fill="url(#miniGrad)"/>
+    <path d="M 8 4 Q 11 3 12 6" fill="url(#miniGrad)" stroke="url(#miniGrad)" stroke-width="0.5"/>
+    
+    <!-- Lettre B -->
+    <text x="13" y="10" font-family="Arial Black" font-size="6" font-weight="900" fill="url(#miniGrad)">B</text>
+  </g>
+  
+  <!-- Fissures -->
+  <line x1="7" y1="0" x2="6" y2="16" stroke="#444" stroke-width="0.2"/>
+  <line x1="12" y1="0" x2="11" y2="16" stroke="#444" stroke-width="0.2"/>
+</svg>
