@@ -49,8 +49,8 @@ const BrokenAnimation = () => {
       gap: '0px',
       fontFamily: 'Arial Black, Arial, sans-serif',
       fontWeight: 900,
-      letterSpacing: 'clamp(1px, 0.3vw, 2px)',
-      height: 'clamp(60px, 15vw, 80px)',
+      letterSpacing: 'clamp(0.8px, 0.25vw, 1.5px)',
+      height: 'clamp(50px, 12vw, 65px)',
       width: '100%',
       margin: '0 auto'
     }}>
@@ -91,7 +91,7 @@ const BrokenAnimation = () => {
           times: [0, 0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 1]
         }}
         style={{
-          fontSize: 'clamp(32px, 8vw, 48px)',
+          fontSize: 'clamp(28px, 7vw, 40px)',
           color: '#7DD321',
           lineHeight: '1',
           fontWeight: 900,
@@ -107,9 +107,9 @@ const BrokenAnimation = () => {
         loop
         autoplay
         style={{
-          width: 'clamp(60px, 15vw, 80px)',
-          height: 'clamp(45px, 12vw, 60px)',
-          marginLeft: 'clamp(-10px, -2vw, -15px)',
+          width: 'clamp(50px, 12vw, 65px)',
+          height: 'clamp(38px, 10vw, 50px)',
+          marginLeft: 'clamp(-8px, -1.5vw, -12px)',
           transform: 'translateY(-1px)',
           zIndex: 2,
           position: 'relative'
@@ -289,14 +289,14 @@ export default function App() {
     <>
       {/* UI debug retirée */}
       {/* Small language toggle button */}
-      <div style={{ position: 'absolute', top: 'clamp(6px, 1.5vw, 8px)', right: 'clamp(8px, 2vw, 12px)', zIndex: 10 }}>
+      <div style={{ position: 'absolute', top: 'clamp(5px, 1.2vw, 6px)', right: 'clamp(6px, 1.5vw, 10px)', zIndex: 10 }}>
         <button onClick={toggleLang} style={{ 
           background: 'transparent', 
           color: '#7DD321', 
           border: '1px solid #7DD321', 
-          borderRadius: 'clamp(4px, 1vw, 6px)', 
-          padding: 'clamp(3px, 1vw, 4px) clamp(6px, 2vw, 10px)', 
-          fontSize: 'clamp(10px, 2.5vw, 12px)', 
+          borderRadius: 'clamp(3px, 0.8vw, 5px)', 
+          padding: 'clamp(2px, 0.8vw, 3px) clamp(5px, 1.5vw, 8px)', 
+          fontSize: 'clamp(9px, 2vw, 10px)', 
           cursor: 'pointer',
           fontWeight: '600'
         }}>
@@ -310,9 +310,9 @@ export default function App() {
           alt="BROKEN Cover" />
         <div style={{
           width: '100%',
-          height: 'clamp(70px, 15vw, 100px)',
-          marginTop: 'clamp(15px, 3vw, 20px)',
-          marginBottom: 'clamp(8px, 2vw, 10px)',
+          height: 'clamp(55px, 12vw, 80px)',
+          marginTop: 'clamp(12px, 2.5vw, 15px)',
+          marginBottom: 'clamp(6px, 1.5vw, 8px)',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center'
