@@ -39,79 +39,24 @@ const detectLang = () => {
   return nav.startsWith('fr') ? 'fr' : 'en'
 }
 
-// Composant pour l'animation BROKEN avec DotLottie
+// Composant pour l'animation BROKEN avec DotLottie uniquement
 const BrokenAnimation = () => {
   return (
     <div style={{
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: '0px',
-      fontFamily: 'Arial Black, Arial, sans-serif',
-      fontWeight: 900,
-      letterSpacing: 'clamp(0.8px, 0.25vw, 1.5px)',
-      height: 'clamp(50px, 12vw, 65px)',
+      height: 'clamp(180px, 35vw, 240px)',
       width: '100%',
       margin: '0 auto'
     }}>
-      <motion.span
-        initial={{ opacity: 0.7, scale: 1 }}
-        animate={{
-          opacity: [0.7, 0.7, 0.7, 0.7, 0.7, 1, 0.4, 1, 0.3, 0.7],
-          scale: [1, 1, 1, 1, 1, 1.08, 0.95, 1.12, 0.88, 1],
-          textShadow: [
-            "0 0 8px rgba(125, 211, 33, 0.3)",
-            "0 0 8px rgba(125, 211, 33, 0.3)",
-            "0 0 8px rgba(125, 211, 33, 0.3)",
-            "0 0 8px rgba(125, 211, 33, 0.3)",
-            "0 0 8px rgba(125, 211, 33, 0.3)",
-            "0 0 25px rgba(125, 211, 33, 1), 0 0 50px rgba(125, 211, 33, 0.8)",
-            "0 0 4px rgba(125, 211, 33, 0.2)",
-            "0 0 30px rgba(125, 211, 33, 1), 0 0 60px rgba(125, 211, 33, 0.9)",
-            "0 0 2px rgba(125, 211, 33, 0.1)",
-            "0 0 8px rgba(125, 211, 33, 0.3)"
-          ],
-          filter: [
-            "brightness(1) contrast(1) saturate(1)",
-            "brightness(1) contrast(1) saturate(1)",
-            "brightness(1) contrast(1) saturate(1)",
-            "brightness(1) contrast(1) saturate(1)",
-            "brightness(1) contrast(1) saturate(1)",
-            "brightness(1.3) contrast(1.2) saturate(1)",
-            "brightness(0.7) contrast(0.9) saturate(1)",
-            "brightness(1.4) contrast(1.3) saturate(1)",
-            "brightness(0.5) contrast(0.8) saturate(1)",
-            "brightness(1) contrast(1) saturate(1)"
-          ]
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-          times: [0, 0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 1]
-        }}
-        style={{
-          fontSize: 'clamp(28px, 7vw, 40px)',
-          color: '#7DD321',
-          lineHeight: '1',
-          fontWeight: 900,
-          zIndex: 1,
-          position: 'relative',
-          filter: 'drop-shadow(0 0 6px rgba(125, 211, 33, 0.4))'
-        }}
-      >
-        BROKE
-      </motion.span>
       <DotLottieReact
-        src="https://lottie.host/f2157860-6a5b-4acb-9595-512db3fdb931/0NxljSbPg3.lottie"
+        src="https://lottie.host/ac98a8cd-1fd8-4f23-81e6-d896d1213e2f/ICxJ8YXJew.lottie"
         loop
         autoplay
         style={{
-          width: 'clamp(50px, 12vw, 65px)',
-          height: 'clamp(38px, 10vw, 50px)',
-          marginLeft: 'clamp(-8px, -1.5vw, -12px)',
-          transform: 'translateY(-1px)',
-          zIndex: 2,
+          width: 'clamp(480px, 80vw, 640px)',
+          height: 'clamp(180px, 35vw, 240px)',
           position: 'relative'
         }}
       />
@@ -310,7 +255,7 @@ export default function App() {
           alt="BROKEN Cover" />
         <div style={{
           width: '100%',
-          height: 'clamp(55px, 12vw, 80px)',
+          height: 'clamp(180px, 35vw, 240px)',
           marginTop: 'clamp(12px, 2.5vw, 15px)',
           marginBottom: 'clamp(6px, 1.5vw, 8px)',
           display: 'flex',
