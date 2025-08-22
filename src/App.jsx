@@ -49,8 +49,8 @@ const BrokenAnimation = () => {
       gap: '0px',
       fontFamily: 'Arial Black, Arial, sans-serif',
       fontWeight: 900,
-      letterSpacing: '2px',
-      height: '80px',
+      letterSpacing: 'clamp(1px, 0.3vw, 2px)',
+      height: 'clamp(60px, 15vw, 80px)',
       width: '100%',
       margin: '0 auto'
     }}>
@@ -91,7 +91,7 @@ const BrokenAnimation = () => {
           times: [0, 0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 1]
         }}
         style={{
-          fontSize: '48px',
+          fontSize: 'clamp(32px, 8vw, 48px)',
           color: '#7DD321',
           lineHeight: '1',
           fontWeight: 900,
@@ -107,9 +107,9 @@ const BrokenAnimation = () => {
         loop
         autoplay
         style={{
-          width: '80px',
-          height: '60px',
-          marginLeft: '-15px',
+          width: 'clamp(60px, 15vw, 80px)',
+          height: 'clamp(45px, 12vw, 60px)',
+          marginLeft: 'clamp(-10px, -2vw, -15px)',
           transform: 'translateY(-1px)',
           zIndex: 2,
           position: 'relative'
@@ -289,8 +289,17 @@ export default function App() {
     <>
       {/* UI debug retirée */}
       {/* Small language toggle button */}
-      <div style={{ position: 'absolute', top: 8, right: 12, zIndex: 10 }}>
-        <button onClick={toggleLang} style={{ background: 'transparent', color: '#7DD321', border: '1px solid #7DD321', borderRadius: 6, padding: '4px 10px', fontSize: 12, cursor: 'pointer' }}>
+      <div style={{ position: 'absolute', top: 'clamp(6px, 1.5vw, 8px)', right: 'clamp(8px, 2vw, 12px)', zIndex: 10 }}>
+        <button onClick={toggleLang} style={{ 
+          background: 'transparent', 
+          color: '#7DD321', 
+          border: '1px solid #7DD321', 
+          borderRadius: 'clamp(4px, 1vw, 6px)', 
+          padding: 'clamp(3px, 1vw, 4px) clamp(6px, 2vw, 10px)', 
+          fontSize: 'clamp(10px, 2.5vw, 12px)', 
+          cursor: 'pointer',
+          fontWeight: '600'
+        }}>
           {lang === 'en' ? 'FR' : 'EN'}
         </button>
       </div>
@@ -301,9 +310,9 @@ export default function App() {
           alt="BROKEN Cover" />
         <div style={{
           width: '100%',
-          height: '100px',
-          marginTop: '20px',
-          marginBottom: '10px',
+          height: 'clamp(70px, 15vw, 100px)',
+          marginTop: 'clamp(15px, 3vw, 20px)',
+          marginBottom: 'clamp(8px, 2vw, 10px)',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center'

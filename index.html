@@ -53,15 +53,15 @@
             mix-blend-mode: overlay
         }
 
-        .container { min-height: 100dvh; display: grid; place-items: center; padding: 24px }
+        .container { min-height: 100dvh; display: grid; place-items: center; padding: clamp(12px, 3vw, 24px) }
 
         .card {
             position: relative;
-            width: min(600px, 98vw);
+            width: min(95vw, 600px);
             background: rgba(20, 20, 22, .72);
             border: 1px solid rgba(255, 255, 255, .06);
             backdrop-filter: blur(10px);
-            border-radius: 14px;
+            border-radius: clamp(10px, 2vw, 14px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
             overflow: hidden
         }
@@ -77,36 +77,36 @@
         }
 
         .hero { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; padding: 18px 18px 8px }
-        #broken-animation { width: 300px; height: 100px; margin-top: 20px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; }
-        .cover { width: 420px; height: 420px; border-radius: 12px; object-fit: cover; border: 1px solid rgba(255, 255, 255, .1); box-shadow: 0 10px 24px rgba(0, 0, 0, .35) }
-        .artist { margin: 16px 0 6px 0; font-size: 26px; letter-spacing: 6px; font-weight: 800 }
-        .album { margin: 0 0 14px 0; font-size: 34px; letter-spacing: 2px; font-weight: 800 }
-        .tag { margin: 0 0 14px 0; font-size: 14px; font-weight: 800; letter-spacing: .6px }
+        #broken-animation { width: clamp(250px, 50vw, 300px); height: clamp(70px, 15vw, 100px); margin-top: 20px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; }
+        .cover { width: clamp(280px, 70vw, 420px); height: clamp(280px, 70vw, 420px); border-radius: 12px; object-fit: cover; border: 1px solid rgba(255, 255, 255, .1); box-shadow: 0 10px 24px rgba(0, 0, 0, .35) }
+        .artist { margin: 16px 0 6px 0; font-size: clamp(20px, 4vw, 26px); letter-spacing: clamp(3px, 1vw, 6px); font-weight: 800 }
+        .album { margin: 0 0 14px 0; font-size: clamp(24px, 5vw, 34px); letter-spacing: clamp(1px, 0.3vw, 2px); font-weight: 800 }
+        .tag { margin: 0 0 14px 0; font-size: clamp(12px, 2.5vw, 14px); font-weight: 800; letter-spacing: clamp(.3px, 0.1vw, .6px) }
         .divider { height: 14px; background: linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, .6)); box-shadow: 0 2px 8px rgba(0, 0, 0, .25) inset; transform: skewY(-2.2deg) }
-        .stack { display: grid; gap: 28px; padding: 32px 36px; }
-        .row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .01)); border: 1px solid rgba(255, 255, 255, .06); border-radius: 12px; min-height: 64px; }
+        .stack { display: grid; gap: clamp(16px, 4vw, 28px); padding: clamp(20px, 5vw, 32px) clamp(16px, 4vw, 36px); }
+        .row { display: flex; align-items: center; justify-content: space-between; padding: clamp(8px, 2vw, 12px) clamp(10px, 2.5vw, 14px); background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .01)); border: 1px solid rgba(255, 255, 255, .06); border-radius: clamp(8px, 2vw, 12px); min-height: clamp(50px, 12vw, 64px); }
         .row:hover { transform: translateY(-2px); background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02)); border-color: var(--ring) }
-        .left { display: flex; gap: 16px; align-items: center }
-        .icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: rgba(255, 255, 255, .04); font-size: 26px }
-        .logo { display: block; height: 48px; width: auto; object-fit: contain; filter: none; background: none; box-shadow: none; max-width: 220px; }
+        .left { display: flex; gap: clamp(8px, 2vw, 16px); align-items: center; flex: 1; }
+        .icon { width: clamp(32px, 8vw, 40px); height: clamp(32px, 8vw, 40px); display: grid; place-items: center; border-radius: clamp(6px, 1.5vw, 10px); background: rgba(255, 255, 255, .04); font-size: clamp(18px, 4vw, 26px) }
+        .logo { display: block; height: clamp(32px, 8vw, 48px); width: auto; object-fit: contain; filter: none; background: none; box-shadow: none; max-width: clamp(120px, 30vw, 220px); }
         .label { display: none }
-        .cta { display: flex; gap: 8px }
-        .btn { padding: 10px 26px; border-radius: 999px; border: 1px solid #d8d8d8; background: linear-gradient(180deg, #ffffff, #ededed); color: #505050; font-weight: 700; letter-spacing: .2px; cursor: pointer; box-shadow: inset 0 1px 0 #fff, 0 3px 0 rgba(0, 0, 0, .18), 0 10px 22px rgba(0, 0, 0, .24); text-decoration: none }
+        .cta { display: flex; gap: clamp(4px, 1vw, 8px); flex-shrink: 0; }
+        .btn { padding: clamp(8px, 2vw, 10px) clamp(16px, 4vw, 26px); border-radius: 999px; border: 1px solid #d8d8d8; background: linear-gradient(180deg, #ffffff, #ededed); color: #505050; font-weight: 700; letter-spacing: .2px; cursor: pointer; box-shadow: inset 0 1px 0 #fff, 0 3px 0 rgba(0, 0, 0, .18), 0 10px 22px rgba(0, 0, 0, .24); text-decoration: none; font-size: clamp(12px, 2.5vw, 14px); white-space: nowrap; }
         .btn:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 #fff, 0 4px 0 rgba(0, 0, 0, .22), 0 14px 28px rgba(0, 0, 0, .3) }
         .btn:focus { text-decoration: none; outline: 2px solid #d1d5db; outline-offset: 2px }
         .btn.primary { background: linear-gradient(180deg, #2dd4bf33, #22d3ee33); border-color: rgba(110, 231, 255, .35) }
-        .section-title { color: #e2e8f0; letter-spacing: .4em; font-size: 15px; font-weight: 800; margin: 8px 0 18px 2px }
-        .legal { display: flex; justify-content: center; gap: 18px; margin: 12px 0 4px 0 }
+        .section-title { color: #e2e8f0; letter-spacing: clamp(.2em, 0.5vw, .4em); font-size: clamp(12px, 2.5vw, 15px); font-weight: 800; margin: clamp(6px, 1.5vw, 8px) 0 clamp(12px, 3vw, 18px) 2px }
+        .legal { display: flex; justify-content: center; gap: clamp(12px, 3vw, 18px); margin: clamp(8px, 2vw, 12px) 0 clamp(2px, 1vw, 4px) 0; font-size: clamp(11px, 2vw, 13px); }
         .legal a { color: #e5e5e5; text-decoration: none }
-        .dots { display: grid; place-items: center; color: #cbd5e1; opacity: .8; margin: 8px 0 }
-        footer { position: relative; z-index: 1; text-align: center; color: #cbd5e1; font-size: 14px; padding: 10px 12px 18px; letter-spacing: .16em }
-        footer strong { font-weight: 800; font-size: 16px }
+        .dots { display: grid; place-items: center; color: #cbd5e1; opacity: .8; margin: clamp(6px, 1.5vw, 8px) 0; font-size: clamp(14px, 3vw, 16px); }
+        footer { position: relative; z-index: 1; text-align: center; color: #cbd5e1; font-size: clamp(12px, 2.5vw, 14px); padding: clamp(8px, 2vw, 10px) clamp(8px, 2vw, 12px) clamp(14px, 3vw, 18px); letter-spacing: clamp(.12em, 0.3vw, .16em) }
+        footer strong { font-weight: 800; font-size: clamp(14px, 3vw, 16px) }
         .copy-mark { font-size: .7em; vertical-align: super; margin-left: 2px; letter-spacing: normal }
         .floating { position: absolute; inset: 0; pointer-events: none }
         .bubble { position: absolute; border-radius: 999px; filter: blur(10px); opacity: .22; animation: float 12s ease-in-out infinite }
-        .bubble:nth-child(1) { width: 140px; height: 140px; left: -30px; top: 20%; background: linear-gradient(180deg, #ffffff99, #d4d4d499) }
-        .bubble:nth-child(2) { width: 90px; height: 90px; right: 10%; top: 10%; animation-duration: 14s; background: linear-gradient(180deg, #e5e5e599, #bfbfbf99) }
-        .bubble:nth-child(3) { width: 120px; height: 120px; right: -40px; bottom: 10%; animation-duration: 16s; background: linear-gradient(180deg, #ffffff99, #cfcfcf99) }
+        .bubble:nth-child(1) { width: clamp(80px, 20vw, 140px); height: clamp(80px, 20vw, 140px); left: -30px; top: 20%; background: linear-gradient(180deg, #ffffff99, #d4d4d499) }
+        .bubble:nth-child(2) { width: clamp(50px, 12vw, 90px); height: clamp(50px, 12vw, 90px); right: 10%; top: 10%; animation-duration: 14s; background: linear-gradient(180deg, #e5e5e599, #bfbfbf99) }
+        .bubble:nth-child(3) { width: clamp(70px, 16vw, 120px); height: clamp(70px, 16vw, 120px); right: -40px; bottom: 10%; animation-duration: 16s; background: linear-gradient(180deg, #ffffff99, #cfcfcf99) }
         @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-18px) } }
         /* Overrides pour cadre blanc */
         .card { background: #ffffff; color: #111; border: 1px solid #e5e7eb }
@@ -114,7 +114,27 @@
         .section-title { color: #111 }
         .legal a { color: #374151 }
         .card footer { color: #374151 }
-        @media (max-width:700px) { .card { width: min(98vw, 420px); } .stack { padding: 18px 8px; } .logo { height: 34px; max-width: 140px; } #broken-animation { width: 250px; height: 80px; } }
+        
+        /* Media queries pour très petits écrans */
+        @media (max-width: 480px) { 
+            .card { width: 95vw; }
+            .stack { padding: 16px 12px; gap: 16px; }
+            .row { flex-direction: row; align-items: center; padding: 10px 8px; }
+            .left { flex: 1; min-width: 0; }
+            .logo { height: 28px; max-width: 100px; }
+            .cta { flex-shrink: 0; }
+            .btn { padding: 6px 12px; font-size: 11px; }
+            #broken-animation { width: 200px; height: 60px; }
+            .cover { width: 260px; height: 260px; }
+        }
+        
+        /* Media queries pour tablettes */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .card { width: 90vw; max-width: 500px; }
+            .logo { height: 36px; max-width: 160px; }
+            .btn { padding: 8px 18px; font-size: 12px; }
+        }
+        
         .copy-mark { font-size: .7em; vertical-align: super; margin-left: 2px; letter-spacing: normal }
         body { /* override minimal pour fond noir pur */
             background:#000 !important;
