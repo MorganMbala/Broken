@@ -95,15 +95,11 @@ export default function App() {
     trackMusicLinkClick(platform)
   }
 
-  // Lecture audio segment 1s -> 7s en boucle infinie (démarrage direct, fade-in sur première lecture)
+  // Lecture audio complète une seule fois au chargement de la page
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (window.__previewActive) { console.log('[preview] already active, skip'); return }
     window.__previewActive = true
-
-    const START_AT = 1.0
-    const END_AT = 7.0
-    const LOOP_LEN_MS = ((END_AT - START_AT) * 1000) | 0
 
     const audio = new Audio('/skaska.mp3')
     audio.preload = 'auto'
@@ -111,16 +107,12 @@ export default function App() {
     audio.muted = true
     audio.volume = 1
 
-    let rafLoop = null
     let stopped = false
     let hasUnmuted = false
-    let stagnantChecks = 0
-    let lastCT = 0
-    let loopStarted = false
 
     const log = (...args) => { console.log('[preview]', ...args); pushLog(args.join(' ')) }
 
-    const cleanup = () => { try { audio.pause() } catch {} if (rafLoop) cancelAnimationFrame(rafLoop) }
+    const cleanup = () => { try { audio.pause() } catch {} }
 
     const unmuteWithFade = (why) => {
       if (stopped) return
@@ -141,66 +133,20 @@ export default function App() {
       }, 40)
     }
 
-    const ensureLooping = () => {
-      if (loopStarted) return
-      loopStarted = true
-      log('loop start', `${START_AT}-${END_AT}s len=${LOOP_LEN_MS}ms`)
-      const loopTick = () => {
-        if (stopped) return
-        const ct = audio.currentTime
-        if (ct >= END_AT) {
-          try { audio.currentTime = START_AT } catch {}
-          log('loop segment ct=' + audio.currentTime.toFixed(3))
-        }
-        if (!audio.paused) {
-          if (Math.abs(ct - lastCT) < 0.005) {
-            stagnantChecks++
-            if (stagnantChecks > 30) { // ~0.5s
-              log('stagnation detected -> force play()')
-              stagnantChecks = 0
-              audio.play().catch(err => log('retry play blocked', err?.message || err))
-            }
-          } else {
-            stagnantChecks = 0
-          }
-          lastCT = ct
-        }
-        rafLoop = requestAnimationFrame(loopTick)
-      }
-      rafLoop = requestAnimationFrame(loopTick)
-    }
-
     const tryStart = (label) => {
       log('attempt play', label)
       const p = audio.play()
       if (p && p.then) {
         p.then(() => {
-          log('play started')
+          log('play started - playing full track')
           unmuteWithFade(label)
-          // Attendre progression réelle puis aligner sur START_AT si besoin
-          const waitProgress = () => {
-            if (stopped) return
-            if (audio.currentTime === 0) {
-              requestAnimationFrame(waitProgress)
-              return
-            }
-            if (audio.currentTime < START_AT - 0.02) {
-              try { audio.currentTime = START_AT } catch {}
-            } else if (audio.currentTime < START_AT) {
-              // laisser approcher
-            } else if (audio.currentTime > END_AT) {
-              try { audio.currentTime = START_AT } catch {}
-            }
-            ensureLooping()
-            setPreviewBlocked(false)
-          }
-          requestAnimationFrame(waitProgress)
+          setPreviewBlocked(false)
         }).catch(err => {
           log('autoplay blocked', err?.name + ':' + err?.message)
           setPreviewBlocked(true)
         })
       }
-      // Timeout fallback progression
+      // Timeout fallback
       setTimeout(() => {
         if (stopped) return
         if (audio.paused || audio.currentTime < 0.05) {
@@ -212,16 +158,16 @@ export default function App() {
 
     audio.addEventListener('loadedmetadata', () => {
       log('loadedmetadata duration=' + audio.duration.toFixed(2))
-      try { audio.currentTime = START_AT } catch {}
     })
     audio.addEventListener('canplaythrough', () => log('canplaythrough readyState=' + audio.readyState))
     audio.addEventListener('playing', () => log('playing event ct=' + audio.currentTime.toFixed(3)))
+    audio.addEventListener('ended', () => log('track ended - playback complete'))
     audio.addEventListener('error', () => log('error code=' + (audio.error?.code || '?')))
     audio.addEventListener('volumechange', () => log('volumechange muted=' + audio.muted + ' vol=' + audio.volume.toFixed(2)))
 
     const onPointer = () => { log('pointer gesture fallback'); tryStart('pointer') }
 
-    log('init preview (direct loop)')
+    log('init preview (full track)')
     tryStart('auto')
     window.addEventListener('pointerdown', onPointer, { once: true })
 
