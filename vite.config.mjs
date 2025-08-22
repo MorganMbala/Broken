@@ -6,10 +6,18 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: []
-    }
+    },
+    target: 'esnext',
+    minify: 'esbuild'
   },
   server: {
     // Désactiver le favicon par défaut de Vite
     middlewareMode: false
+  },
+  define: {
+    global: 'globalThis'
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom']
   }
 })
