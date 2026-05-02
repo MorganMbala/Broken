@@ -101,7 +101,7 @@ export default function App() {
     if (window.__previewActive) { console.log('[preview] already active, skip'); return }
     window.__previewActive = true
 
-    const audio = new Audio('/skaska.mp3')
+    const audio = new Audio('/brokenseulm.mp4')
     audio.preload = 'auto'
     audio.playsInline = true
     audio.muted = true
@@ -112,7 +112,7 @@ export default function App() {
 
     const log = (...args) => { console.log('[preview]', ...args); pushLog(args.join(' ')) }
 
-    const cleanup = () => { try { audio.pause() } catch {} }
+    const cleanup = () => { try { audio.pause() } catch { } }
 
     const unmuteWithFade = (why) => {
       if (stopped) return
@@ -129,7 +129,7 @@ export default function App() {
         else log('fade-in terminé')
       }
       setTimeout(() => {
-        try { audio.muted = false; hasUnmuted = true; log('unmuted (fade)', why || ''); requestAnimationFrame(step) } catch {}
+        try { audio.muted = false; hasUnmuted = true; log('unmuted (fade)', why || ''); requestAnimationFrame(step) } catch { }
       }, 40)
     }
 
@@ -181,13 +181,13 @@ export default function App() {
       {/* UI debug retirée */}
       {/* Small language toggle button */}
       <div style={{ position: 'absolute', top: 'clamp(5px, 1.2vw, 6px)', right: 'clamp(6px, 1.5vw, 10px)', zIndex: 10 }}>
-        <button onClick={toggleLang} style={{ 
-          background: 'transparent', 
-          color: '#7DD321', 
-          border: '1px solid #7DD321', 
-          borderRadius: 'clamp(3px, 0.8vw, 5px)', 
-          padding: 'clamp(2px, 0.8vw, 3px) clamp(5px, 1.5vw, 8px)', 
-          fontSize: 'clamp(9px, 2vw, 10px)', 
+        <button onClick={toggleLang} style={{
+          background: 'transparent',
+          color: '#7DD321',
+          border: '1px solid #7DD321',
+          borderRadius: 'clamp(3px, 0.8vw, 5px)',
+          padding: 'clamp(2px, 0.8vw, 3px) clamp(5px, 1.5vw, 8px)',
+          fontSize: 'clamp(9px, 2vw, 10px)',
           cursor: 'pointer',
           fontWeight: '600'
         }}>
@@ -272,8 +272,8 @@ export default function App() {
                 <span>•</span>
                 <a href="#" target="_blank" rel="noreferrer">{dict.privacy}</a>
               </div>
-              <footer style={{textAlign:'center', color:'#374151', fontSize:14, letterSpacing:'.16em', marginTop:24}}>
-                {dict.powered}<br/><br/><strong>{' '}{dict.brand}<span className="copy-mark">©</span></strong>
+              <footer style={{ textAlign: 'center', color: '#374151', fontSize: 14, letterSpacing: '.16em', marginTop: 24 }}>
+                {dict.powered}<br /><br /><strong>{' '}{dict.brand}<span className="copy-mark">©</span></strong>
               </footer>
             </motion.div>
           </motion.div>
